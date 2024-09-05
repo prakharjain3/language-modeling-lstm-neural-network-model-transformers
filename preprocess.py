@@ -31,8 +31,8 @@ class TextProcessor:
     def preprocess_text(self):
         with open(self.file_path, 'r') as f:
             corpus = f.read()
-        sentences = sent_tokenize(self.clean_text(corpus))
-        sentences = [sent for sent in sentences if not sent.lower(
+        sentences = sent_tokenize(corpus)
+        sentences = [self.clean_text(sent) for sent in sentences if not sent.lower(
         ).startswith('chapter') and not sent[0].isdigit()]
         return sentences
 
