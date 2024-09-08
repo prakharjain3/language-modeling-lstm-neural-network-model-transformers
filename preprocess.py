@@ -46,7 +46,7 @@ class TextProcessor:
             sentence_ngrams = zip(*[tokens[i:] for i in range(n)])
             ngrams.extend([' '.join(ngram) for ngram in sentence_ngrams])
         return ngrams
-
+    
 
 class Vocabulary:
     def __init__(self, glove_path):
@@ -54,7 +54,7 @@ class Vocabulary:
             glove_path, binary=False, no_header=True)
         self.word2idx = {}
         self.idx2word = []
-        self.special_tokens = ['<UNK>', '<S>', '</S>']
+        self.special_tokens = ['<PAD>', '<UNK>', '<S>', '</S>']
         self._add_special_tokens()
 
     def _add_special_tokens(self):
